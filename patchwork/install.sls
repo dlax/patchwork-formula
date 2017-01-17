@@ -4,6 +4,7 @@ install patchwork from targz:
   archive.extracted:
     - name: /opt/patchwork
     - source: https://github.com/getpatchwork/patchwork/archive/{{ patchwork.version }}.tar.gz
+    - skip_verify: true  # XXX
 
 patchwork dependencies:
   pkg.installed:
