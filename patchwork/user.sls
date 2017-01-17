@@ -8,5 +8,10 @@
     - home: {{ patchwork.home }}
     - groups:
       - {{ patchwork.group }}
+  file.append:
+    - name: {{ patchwork.home }}/.profile
+    - text: |
+        DJANGO_SECRET_KEY={{ patchwork.secret_key }}
+        export DJANGO_SECRET_KEY
 
 # vim: ft=sls

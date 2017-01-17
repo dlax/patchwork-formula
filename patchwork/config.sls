@@ -8,4 +8,4 @@ include:
     - source: salt://patchwork/files/production.py.j2
     - template: jinja
     - require:
-      - archive: install patchwork from targz
+      - archive: install patchwork

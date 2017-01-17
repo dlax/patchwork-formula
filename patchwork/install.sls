@@ -3,7 +3,7 @@
 include:
   - patchwork.user
 
-install patchwork from targz:
+install patchwork:
   archive.extracted:
     - name: {{ patchwork.home }}
     - source: https://github.com/getpatchwork/patchwork/archive/{{ patchwork.version }}.tar.gz
@@ -25,7 +25,7 @@ patchwork virtualenv:
     - python: python3
     - require:
       - pkg: patchwork dependencies
-      - archive: install patchwork from targz
+      - archive: install patchwork
 
 {{ [patchwork.home, 'static']|join('/') }}:
   file.directory:
