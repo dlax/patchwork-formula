@@ -6,6 +6,8 @@ install patchwork from targz:
     - source: https://github.com/getpatchwork/patchwork/archive/{{ patchwork.version }}.tar.gz
     - skip_verify: true  # XXX
 
+{% set basedir = 'patchwork-' + (patchwork.version[1:] if patchwork.version.startswith('v') else patchwork.version) %}
+
 patchwork dependencies:
   pkg.installed:
     - pkgs:
@@ -16,7 +18,7 @@ patchwork dependencies:
 patchwork virtualenv:
   virtualenv.managed:
     - name: /opt/patchwork/venv
-    - requirements: /opt/patchwork/{{ patchwork.version }}/requirements-prod.txt
+    - requirements: /opt/patchwork/{{ basedir }}/requirements-prod.txt
     - use_wheel: true
     - python: python3
     - require:
