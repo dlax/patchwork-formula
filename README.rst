@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/dlax/patchwork-formula.svg?branch=master
+    :target: https://travis-ci.org/dlax/patchwork-formula
+
 =================
 patchwork-formula
 =================
