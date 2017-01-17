@@ -5,7 +5,7 @@
     - name: {{ patchwork.group }}
   user.present:
     - shell: /bin/bash
-    - home: /opt/patchwork
+    - home: {{ patchwork.home }}
     - groups:
       - {{ patchwork.group }}
 

@@ -1,6 +1,12 @@
 patchwork:
   version: v1.1.2
+  home: /opt/patchwork
   user: patchwork
   group: patchwork
+  db_name: patchwork
+  db_user: patchwork
+  db_password: patchwork
+  db_host: localhost
+  db_port: 5432
 
 # vim: sts=2 sw=2
