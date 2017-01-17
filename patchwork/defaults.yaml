@@ -1,4 +1,6 @@
 patchwork:
   version: v1.1.2
+  user: patchwork
+  group: patchwork
 
 # vim: sts=2 sw=2
