@@ -1,4 +1,4 @@
 patchwork:
-  repourl: https://github.com/getpatchwork/patchwork
+  version: v1.1.2
 
 # vim: sts=2 sw=2
