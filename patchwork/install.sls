@@ -10,8 +10,8 @@ patchwork dependencies:
   pkg.installed:
     - pkgs:
       - python3
-      - python3-virtualenv
       - python3-pip
+      - virtualenv
 
 patchwork virtualenv:
   virtualenv.managed:
