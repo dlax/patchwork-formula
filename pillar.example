@@ -1,2 +1,1 @@
-patchwork:
-  lookup:
+test/pillar/patchwork.sls
