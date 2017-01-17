@@ -14,6 +14,7 @@ patchwork dependencies:
       - python3
       - python3-pip
       - virtualenv
+      - postgresql-server-dev-9.4  # Needed to build psycopg2.
 
 patchwork virtualenv:
   virtualenv.managed:
