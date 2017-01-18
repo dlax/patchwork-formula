@@ -19,3 +19,36 @@ include:
     - require:
       - user: {{ patchwork.user }}
       - archive: install patchwork
+
+{% set nginx_conffile = '/etc/nginx/site-available/patchwork.conf' %}
+
+{{ nginx_conffile }}:
+  file.managed:
+    - source: salt://patchwork/files/patchwork-nginx.conf.j2
+    - template: jinja
+    - makedirs: true
+    - require:
+      - pkg: nginx
+
+/etc/nginx/site-enabled/patchwork.conf:
+  file.symlink:
+    - target: {{ nginx_conffile }}
+    - makedirs: true
+    - require:
+      - file: {{ nginx_conffile }}
+
+/etc/uwsgi/sites/patchwork.ini:
+  file.managed:
+    - source: salt://patchwork/files/patchwork-uwsgi.ini.j2
+    - makedirs: true
+    - template: jinja
+    - require:
+      - pkg: uwsgi
+
+/etc/systemd/system/uwsgi.service:
+  file.managed:
+    - source: salt://patchwork/files/uwsgi.service.j2
+    - template: jinja
+    - require:
+      - file: /etc/uwsgi/sites/patchwork.ini
+      - pkg: uwsgi

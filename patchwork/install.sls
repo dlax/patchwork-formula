@@ -34,4 +34,14 @@ patchwork virtualenv:
     - require:
       - user: {{ patchwork.user }}
 
+nginx:
+  pkg.installed:
+    - name: nginx-full
+
+uwsgi:
+  pkg.installed:
+    - pkgs:
+      - uwsgi
+      - uwsgi-plugin-python
+
 # vim: ft=sls

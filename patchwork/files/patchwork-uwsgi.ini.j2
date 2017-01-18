@@ -1,0 +1,26 @@
+{% from "patchwork/map.jinja" import patchwork with context -%}
+[uwsgi]
+
+project = patchwork
+base = {{ [patchwork.home, patchwork.distdir ]|join('/') }}
+user = {{ patchwork.user }}
+group = {{ patchwork.group }}
+
+chdir = %(base)/%(project)
+pythonpath = %(base)/%(project)
+module = %(project).wsgi:application
+virtualenv = {{ patchwork.venv }}
+
+master = true
+processes = 5
+# increase buffer size to avoid "502 bad gateway error"
+# "recv() failed (104: Connection reset by peer) while reading response header from upstream"
+buffer-size = 16384
+
+uid = %(user)
+gid = %(group)
+
+daemonize = /var/log/%(project).log
+socket = /run/uwsgi/%(project).sock
+chmod-socket = 660
+vacuum = true
