@@ -24,6 +24,7 @@ that differ from whats in defaults.yaml
 
 {% do patchwork.update({
     'distdir': 'patchwork-' + (patchwork.version[1:] if patchwork.version.startswith('v') else patchwork.version),
+    'venv': [patchwork.home, 'venv']|join('/'),
     })
 %}
 

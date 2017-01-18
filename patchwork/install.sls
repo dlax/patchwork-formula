@@ -19,7 +19,7 @@ patchwork dependencies:
 
 patchwork virtualenv:
   virtualenv.managed:
-    - name: {{ [patchwork.home, 'venv']|join('/') }}
+    - name: {{ patchwork.venv }}
     - requirements: {{ [patchwork.home, patchwork.distdir, 'requirements-prod.txt']|join('/') }}
     - use_wheel: true
     - python: python3
