@@ -76,4 +76,4 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.7/ref/settings/#static-files
 #
 
-STATIC_ROOT = os.environ.get('STATIC_ROOT', '{{ [patchwork.home, 'static']|join('/') }}')
+STATIC_ROOT = os.environ.get('STATIC_ROOT', '{{ patchwork.static_root }}')
