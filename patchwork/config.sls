@@ -20,20 +20,18 @@ include:
       - user: {{ patchwork.user }}
       - archive: install patchwork
 
-{% set nginx_conffile = '/etc/nginx/site-available/patchwork.conf' %}
+{% set nginx_conffile = '/etc/nginx/sites-available/patchwork.conf' %}
 
 {{ nginx_conffile }}:
   file.managed:
     - source: salt://patchwork/files/patchwork-nginx.conf.j2
     - template: jinja
-    - makedirs: true
     - require:
       - pkg: nginx
 
-/etc/nginx/site-enabled/patchwork.conf:
+/etc/nginx/sites-enabled/patchwork.conf:
   file.symlink:
     - target: {{ nginx_conffile }}
-    - makedirs: true
     - require:
       - file: {{ nginx_conffile }}
 
