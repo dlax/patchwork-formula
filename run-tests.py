@@ -96,6 +96,8 @@ def _dev(image, salt=False, postgres=False, exec_cmd=None):
         "-v", "{0}:/srv/formula/.".format(BASEDIR),
     ])
 
+    cmd.extend(["--publish", "80"])
+
     cmd.append(tag)
 
     # Run the container default CMD as pid 1 (init system)
