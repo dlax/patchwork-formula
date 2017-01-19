@@ -10,4 +10,3 @@ env:
 script:
     - ./run-tests.py test $IMAGE -v
     - ./run-tests.py dev $IMAGE --salt --postgres --cmd "salt-call -l debug --hard-crash --retcode-passthrough state.sls patchwork.dbsetup"
-    - ./run-tests.py dev $IMAGE --salt --cmd "salt-call -l debug --hard-crash --retcode-passthrough state.sls patchwork.gunicorn"

@@ -1,3 +1,4 @@
 base:
   '*':
     - patchwork
+    - patchwork.gunicorn
