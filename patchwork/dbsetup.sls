@@ -8,8 +8,19 @@ include:
 {% set basedir = [patchwork.home, patchwork.distdir]|join('/') %}
 {% set manage = [basedir, 'manage.py']|join('/') %}
 
+{% set check_cmd = [python, manage, 'check']|join(' ') %}
+
+{{ check_cmd }}:
+  cmd.run:
+    - runas: {{ patchwork.user }}
+    - env:
+      - DJANGO_SECRET_KEY: {{ patchwork.secret_key }}
+    - require:
+      - virtualenv: patchwork virtualenv
+      - archive: install patchwork
+
 {% for cmd in (
-    'check',
+    'migrate',
     ['loaddata', [basedir, 'fixtures', 'default_tags.xml']|join('/')]|join(' '),
     ['loaddata', [basedir, 'fixtures', 'default_states.xml']|join('/')]|join(' '),
     'collectstatic --noinput',
@@ -22,4 +33,5 @@ include:
     - require:
       - virtualenv: patchwork virtualenv
       - archive: install patchwork
+      - cmd: {{ check_cmd }}
 {% endfor %}
