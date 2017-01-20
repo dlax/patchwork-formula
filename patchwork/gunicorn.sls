@@ -2,6 +2,7 @@
 
 include:
   - patchwork.install
+  - patchwork.supervisor
 
 python-pip:
   pkg.installed
@@ -12,9 +13,6 @@ gunicorn:
     - require:
       - virtualenv: {{ patchwork.venv }}
       - pkg: python-pip  # pip_state tries to import pip
-
-supervisor:
-  pkg.installed
 
 /etc/supervisor/conf.d/patchwork.conf:
   file.managed:
