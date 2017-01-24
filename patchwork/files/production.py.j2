@@ -25,7 +25,7 @@ ALLOWED_HOSTS=[
     "{{ addr }}",
 {%- endfor %}
 {%- for addr in grains['ipv6'] %}
-    "{{ addr }}",
+    "[{{ addr }}]",
 {%- endfor %}
 ]
 
