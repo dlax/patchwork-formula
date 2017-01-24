@@ -19,8 +19,15 @@ from .base import *  # noqa
 # Core settings
 # https://docs.djangoproject.com/en/1.6/ref/settings/#core-settings
 #
-
-ALLOWED_HOSTS=['localhost']
+ALLOWED_HOSTS=[
+    'localhost',
+{% for addr in grains['ipv4'] %}
+    "{{ addr }}",
+{%- endfor %}
+{%- for addr in grains['ipv6'] %}
+    "{{ addr }}",
+{%- endfor %}
+]
 
 # Security
 #
