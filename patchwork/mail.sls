@@ -39,6 +39,7 @@ getmail4:
     - require:
       - pkg: supervisor
 
+{% if patchwork.version != 'master' -%}
 # Install a modified parsemail.sh script which handles $PW_PYTHON, which is
 # needed as we use a virtualenv (modifications taken from upstream).
 {{ [patchwork.home, patchwork.distdir, 'patchwork/bin/parsemail.sh']|join('/') }}:
@@ -47,3 +48,4 @@ getmail4:
     - replace: true
     - require:
       - archive: install patchwork
+{%- endif %}

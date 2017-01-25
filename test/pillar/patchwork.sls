@@ -1,6 +1,6 @@
 patchwork:
   lookup:
-    version: v1.1.2
+    version: master
     secret_key: secret
     db_host: postgres
     admins:

@@ -88,3 +88,10 @@ DATABASES = {
 #
 
 STATIC_ROOT = os.environ.get('STATIC_ROOT', '{{ patchwork.static_root }}')
+
+#
+# Patchwork
+#
+
+ENABLE_XMLRPC = False
+ENABLE_REST_API = True
