@@ -21,8 +21,8 @@ include:
 
 {% for cmd in (
     'migrate',
-    ['loaddata', [basedir, 'fixtures', 'default_tags.xml']|join('/')]|join(' '),
-    ['loaddata', [basedir, 'fixtures', 'default_states.xml']|join('/')]|join(' '),
+    ['loaddata', [basedir, 'patchwork', 'fixtures', 'default_tags.xml']|join('/')]|join(' '),
+    ['loaddata', [basedir, 'patchwork', 'fixtures', 'default_states.xml']|join('/')]|join(' '),
     'collectstatic --noinput',
 )%}
 {{ [python, manage, cmd]|join(' ') }}:
