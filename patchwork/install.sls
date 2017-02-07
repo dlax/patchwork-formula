@@ -6,7 +6,7 @@ include:
 install patchwork:
   archive.extracted:
     - name: {{ patchwork.home }}
-    - source: https://github.com/getpatchwork/patchwork/archive/{{ patchwork.version }}.tar.gz
+    - source: {{ patchwork.repourl }}/archive/{{ patchwork.version }}.tar.gz
     - skip_verify: true  # XXX
 
 patchwork dependencies:

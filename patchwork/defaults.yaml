@@ -1,4 +1,5 @@
 patchwork:
+  repourl: https://github.com/getpatchwork/patchwork
   version: v1.1.2
   home: /opt/patchwork
   user: patchwork
