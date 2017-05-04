@@ -20,3 +20,6 @@ read_all = false
 delivered_to = false
 # do not add a Received: header field
 received = false
+{% if patchwork.mail.delete -%}
+delete = true
+{%- endif %}
