@@ -12,3 +12,4 @@ patchwork:
       port: 993
       username: patchwork
       password: krowhctap
+      delete: false
