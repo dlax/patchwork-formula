@@ -1,9 +1,16 @@
-{% from "patchwork/map.jinja" import patchwork with context -%}
+{%- from "patchwork/map.jinja" import patchwork with context %}
+{%- if 'server_name' in patchwork %}
+    {%- set default_server = '' %}
+    {%- set server_names = [patchwork.server_name] if patchwork.server_name is string else patchwork.server_name %}
+{%- else %}
+    {%- set default_server = ' default_server' %}
+    {%- set server_names = ['_'] %}
+{%- endif -%}
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+    listen 80{{ default_server }};
+    listen [::]:80{{ default_server }};
 
-    server_name _;
+    server_name {{ ' '.join(server_names) }};
     location /static {
         alias {{ patchwork.static_root }};
         expires 3h;
