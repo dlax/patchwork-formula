@@ -3,7 +3,7 @@
 command={{ patchwork.venv }}/bin/gunicorn patchwork.wsgi:application --bind unix://{{ patchwork.home }}/patchwork.sock
 user={{ patchwork.user }}
 directory={{ patchwork.home }}
-environment=PYTHONPATH="{{ [patchwork.home, patchwork.distdir]|join('/') }}",DJANGO_SECRET_KEY="{{ patchwork.secret_key }}"
+environment=PYTHONPATH="{{ [patchwork.home, patchwork.distdir]|join('/') }}"
 stdout_logfile={{ patchwork.home }}/patchwork.log
 stderr_logfile={{ patchwork.home }}/patchwork.log
 autostart=true

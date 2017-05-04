@@ -13,8 +13,6 @@ include:
 {{ check_cmd }}:
   cmd.run:
     - runas: {{ patchwork.user }}
-    - env:
-      - DJANGO_SECRET_KEY: {{ patchwork.secret_key }}
     - require:
       - virtualenv: patchwork virtualenv
       - archive: install patchwork
@@ -28,8 +26,6 @@ include:
 {{ [python, manage, cmd]|join(' ') }}:
   cmd.run:
     - runas: {{ patchwork.user }}
-    - env:
-      - DJANGO_SECRET_KEY: {{ patchwork.secret_key }}
     - require:
       - virtualenv: patchwork virtualenv
       - archive: install patchwork

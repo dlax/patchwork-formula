@@ -3,7 +3,7 @@
 command=/usr/bin/getmail --getmaildir={{ getmaildir }} --idle INBOX
 user={{ patchwork.user }}
 directory={{ patchwork.home }}
-environment=PW_PYTHON="{{ [patchwork.venv, 'bin', 'python']|join('/') }}",DJANGO_SECRET_KEY="{{ patchwork.secret_key }}"
+environment=PW_PYTHON="{{ [patchwork.venv, 'bin', 'python']|join('/') }}"
 stdout_logfile={{ patchwork.home }}/getmail.log
 stderr_logfile={{ patchwork.home }}/getmail.log
 autostart=true
